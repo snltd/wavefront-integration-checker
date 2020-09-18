@@ -12,6 +12,16 @@ It lets you quickly make charts like this.
 
 ![Sample Charts](resources/sample.png)
 
+The queries are, top to bottom and left to right:
+
+```
+ts("sre.wavefront.integrations", type="CLOUDWATCH")
+ts("sre.wavefront.integrations", type="EC2")
+lowpass(1, ts("sre.wavefront.integrations"))
+ts("aws.lambda.errors", FunctionName="wavefrontIntegrationMonitor-dev-wavefrontIntegrationMonitor")
+ts("aws.lambda.duration", Resource="wavefrontIntegrationMonitor-dev-wavefrontIntegrationMonitor")
+```
+
 Hopefully Wavefront will give us better introspection of integrations soon,
 but until then, there's this.
 
@@ -30,8 +40,9 @@ You need the following values in Parameter Store:
 | API token    | `/wavefront/integrationMonitor/token`    | yes           |
 | API endpoint | `/wavefront/integrationMonitor/endpoint` | no            |
 
-The token should belong to a service account with the *ingestion* and *proxy*
-privileges. If either of these values are unset, the script will error.
+The token should belong to a service account with the **ingestion** and
+**proxy** privileges. If either of these values are unset, the script will
+exit with an error.
 
 You can set the metric path with the `WF_PATH` environment variable. It
 defaults to `sre.wavefront.integrations`.
