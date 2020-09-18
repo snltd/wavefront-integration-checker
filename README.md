@@ -25,8 +25,10 @@ plugin.
 
 You need the following values in Parameter Store:
 
-| API token | `/wavefront/integrationMonitor/token` | encrypted |
-| API endpoint | `/wavefront/integrationMonitor/endpoint` | not encrypted |
+| thing        | path                                     | encrypted?    |
+|--------------|------------------------------------------|---------------|
+| API token    | `/wavefront/integrationMonitor/token`    | yes           |
+| API endpoint | `/wavefront/integrationMonitor/endpoint` | no            |
 
 The token should belong to a service account with the *ingestion* and *proxy*
 privileges. If either of these values are unset, the script will error.
