@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
+    inifile (3.0.0)
+    map (6.6.0)
+    multipart-post (2.1.1)
+    public_suffix (4.0.6)
+    wavefront-sdk (5.2.0)
+      addressable (~> 2.7)
+      faraday (~> 1.0)
+      inifile (~> 3.0)
+      map (~> 6.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  wavefront-sdk (= 5.2.0)
+
+BUNDLED WITH
+   2.1.4

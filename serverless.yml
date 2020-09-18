@@ -1,0 +1,31 @@
+service: wavefrontIntegrationMonitor
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: '2'
+
+plugins:
+  - serverless-ruby-package
+
+provider:
+  name: aws
+  runtime: ruby2.7
+  region: eu-west-1
+  environment:
+    WF_TOKEN: ${ssm:/wavefront/integrationMonitor/token~true}
+    WF_ENDPOINT: ${ssm:/wavefront/integrationMonitor/endpoint}
+
+functions:
+  wavefrontIntegrationMonitor:
+    handler: handler.query_integrations
+    events:
+      - schedule: rate(5 minutes)
+
+package:
+  include:
+    - handler.rb
+  exclude:
+    - .git/**
+    - .travis.yml
+    - resources
+    - README.md
