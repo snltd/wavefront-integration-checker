@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 load 'vendor/bundle/bundler/setup.rb'
-require 'pathname'
 require 'wavefront-sdk/cloudintegration'
 require 'wavefront-sdk/write'
 require 'logger'
